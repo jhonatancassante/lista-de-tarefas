@@ -89,6 +89,7 @@ function main() {
     });
 
     addSavedTasks();
+    newTask.focus();
 }
 
 main();
