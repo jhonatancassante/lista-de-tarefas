@@ -1,35 +1,63 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
 
 :root {
-    --primary-color: rgb(17, 86, 102);
-    --primary-color-darker: rgb(9, 48, 56);
-    --secondary-color: rgb(240, 247, 253);
+    --primary-color: #50E3C2;
+    --primary-color-darker: #4ac0a6;
+    --secondary-color: #EBF1F1;
+    --text-color: #000;
+    --shadows-color: rgba(0, 0, 0, 0.6);
+    --shadows: 4px 4px 12px var(--shadows-color);
+    --shadows-small: 2px 2px 6px var(--shadows-color);
 }
 
 * {
     box-sizing: border-box;
     outline: 0;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    background-color: var(--primary-color);
+    background-color: var(--secondary-color);
     font-family: 'Open Sans', sans-serif;
     font-size: 1.3em;
     line-height: 1.5em;
+    color: var(--text-color);
+}
+
+body.dark-mode {
+    --primary-color: #73FFE0;
+    --primary-color-darker: #a8feeb;
+    --secondary-color: #2C3F50;
+    --text-color: #FFF;
 }
 
 .container {
+    display: flex;
+    position: relative;
+    flex-direction: column;
     max-width: 640px;
     margin: 50px auto;
     background-color: var(--secondary-color);
-    padding: 20px;
+    padding: 30px;
     border-radius: 10px;
+    box-shadow: var(--shadows);
 }
 
-.container p {
-    text-align: justify;
+.dark-mode-box {
+    display: flex;
+    position: absolute;
+    top: 30px;
+    right: 30px;
+}
+
+.dark-mode-box i {
+    display: inherit;
+    cursor: pointer;
+}
+
+.dark-mode-box i.active {
+    display: none;
 }
 
 .form input, .form label, .form button {
@@ -42,38 +70,57 @@ body {
     height: 50px;
     width: 70%;
     padding: 0 20px;
+    outline: none;
+    border: none;
+    box-shadow: var(--shadows-small);
+    margin-right: 30px;
 }
 
 .form input:focus {
-    outline: 1px solid var(--primary-color);
+    outline: 2px solid var(--primary-color);
 }
 
 .form button {
     border: none;
     background-color: var(--primary-color);
     color: var(--secondary-color);
-    font-size: 18px;
+    font-size: 20px;
     font-weight: bold;
     height: 50px;
     cursor: pointer;
     margin-top: 30px;
+    padding: 10px 20px;
+    text-shadow: 2px 1px var(--shadows-color);
+    box-shadow: var(--shadows-small);
+}
+
+body.dark-mode .form button {
+    text-shadow: none;
 }
 
 .form button:hover {
     background-color: var(--primary-color-darker);
 }
 
+.task-list {
+    padding: 10px;
+    margin-left: 20px;;
+}
+
 .task-list li {
-    margin-bottom: 10px;
-    font-size: 18px;
+    margin-bottom: 15px;
+    font-size: 20px;
+    list-style: circle;
 }
 
 .task-list button {
-    margin: 0 5px;
-    font-size: 18px;
+    margin: 0 10px;
+    font-size: 16px;
     font-weight: normal;
-    height: 30px;
+    height: auto;
     width: auto;
+    padding: 8px 16px;
+    border-radius: 6px;
 }
 
 .task-list button:first-child {
@@ -81,5 +128,6 @@ body {
 }
 
 .task-list li.concluded {
-    text-decoration: line-through black solid 3px;
+    text-decoration: line-through var(--text-color) solid 2px;
+    list-style: disc;
 }

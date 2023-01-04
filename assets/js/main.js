@@ -24,14 +24,14 @@ function main() {
 
     function createButtonConcluded(li) {
         const buttonConcluded = document.createElement('button');
-        buttonConcluded.innerText = 'Concluído';
+        buttonConcluded.innerHTML = '<i class="fa-solid fa-check" title="Concluído"></i>';
         buttonConcluded.setAttribute('class', 'concluded');
         li.appendChild(buttonConcluded);
     }
 
     function createButtonDelete(li) {
         const buttonDelete = document.createElement('button');
-        buttonDelete.innerText = 'Apagar';
+        buttonDelete.innerHTML = '<i class="fa-solid fa-trash" title="Apagar"></i>';
         buttonDelete.setAttribute('class', 'delete');
         li.appendChild(buttonDelete);
     }
@@ -43,8 +43,6 @@ function main() {
         for (let task of liTasks) {
             let taskText = task.innerText;
             let concludedTask = task.classList[0];
-            taskText = taskText.replace('Concluído', '');
-            taskText = taskText.replace('Apagar', '').trim();
             listOfTasks.push({ taskText, concludedTask });
         }
 
@@ -56,9 +54,30 @@ function main() {
         const tasksJSON = localStorage.getItem('tasks');
         const listOfTasks = JSON.parse(tasksJSON);
 
+        if (!listOfTasks) return
+
         for (let task of listOfTasks) {
             createTask(task.taskText, task.concludedTask);
         }
+    }
+
+    function addSavedMode() {
+        const darkModeStatus = localStorage.getItem('darkMode');
+
+
+        if (darkModeStatus === 'active') {
+            changeDarkLight();
+        }
+    }
+
+    function changeDarkLight() {
+        const body = document.querySelector('body');
+        const iconSun = document.querySelector('.fa-sun');
+        const iconMoon = document.querySelector('.fa-moon');
+
+        iconMoon.classList.toggle('active');
+        iconSun.classList.toggle('active');
+        body.classList.toggle('dark-mode');
     }
 
     newTask.addEventListener('keypress', (e) => {
@@ -86,9 +105,16 @@ function main() {
             el.parentElement.remove();
             saveTasks();
         }
+
+        if (el.classList.contains('fa-sun') || el.classList.contains('fa-moon')) {
+            changeDarkLight();
+            if (el.classList.contains('fa-sun')) localStorage.setItem('darkMode', 'deactive');
+            else localStorage.setItem('darkMode', 'active');
+        }
     });
 
     addSavedTasks();
+    addSavedMode();
     newTask.focus();
 }
 
