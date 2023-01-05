@@ -1,6 +1,6 @@
 # Lista de Tarefas
 
-Lista de tarefas feito durante o curso Curso de JavaScript e TypeScript do básico ao avançado ministrado pelo instrutor Luiz Otávio Miranda na plataforma da Udemy.
+Lista de tarefas feito durante a Aula 048 do Curso de JavaScript e TypeScript do básico ao avançado ministrado pelo instrutor Luiz Otávio Miranda na plataforma da Udemy.
 
 O mesmo foi feito utilizando apenas HTML, CSS e JavaScript como forma de aprimorar meu aprendizado na linguagem e depois foi refatorado para acrescentar novo visual e novas funcionalidades.
 
