@@ -104,7 +104,8 @@ body.dark-mode .form button {
 
 .task-list {
     padding: 10px;
-    margin-left: 20px;;
+    margin-left: 20px;
+    ;
 }
 
 .task-list li {
